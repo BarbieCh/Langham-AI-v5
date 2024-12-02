@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Innovation at Langham Hospitality Group</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --langham-gold: #C4A962;
+            --langham-darkgold: #8f7a45;
+            --langham-dark: #2C2C2C;
+            --langham-light: #F5F5F5;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: var(--langham-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        .slide-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: y mandatory;
+        }
+        .slide {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            scroll-snap-align: start;
+            min-height: calc(100vh - 80px); /* Adjust for controls height */
+            box-sizing: border-box;
+        }
+        .slide h1 {
+            color: var(--langham-dark);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--langham-gold);
+            padding-bottom: 10px;
+        }
+        .slide h2 {
+            color: var(--langham-darkgold);
+            font-size: 1.2em;
+        }
+        .slide h3 {
+            color: var(--langham-gold);
+            font-size: 1em;
+        }
+        .slide ul {
+            color: var(--langham-dark);
+            line-height: 1.4;
+            padding-left: 20px;
+        }
+        .source-citation {
+            font-size: 0.7em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+        }
+        .slide sh1 {
+            color: var(--langham-dark);
+            font-size: 0.9em;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: var(--langham-dark);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            background: var(--langham-gold);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8em;
+        }
+        button:hover {
+            background: #A08440;
+        }
+        .stat-box, .highlight-box, .case-study {
+            background: var(--langham-light);
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid var(--langham-gold);
+            font-size: 0.9em;
+        }
+        .highlight-box {
+            background: linear-gradient(45deg, var(--langham-gold), #E5D5A8);
+            color: white;
+            border-left: none;
+        }
+        .chart-container {
+            position: relative;
+            margin: 10px auto;
+            height: 200px;
+            width: 100%;
+        }
+        .dual-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .chart-box {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .agenda-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        .agenda-number {
+            background: var(--langham-gold);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--langham-gold);
+            top: 0;
+            bottom: 0;
+            left: 20px;
+        }
+        .timeline-item {
+            padding: 10px 0 10px 50px;
+            position: relative;
+        }
+        .timeline-date {
+            font-weight: bold;
+            color: var(--langham-gold);
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        .timeline-content {
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .kpi-item {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+        .kpi-value {
+            font-size: 1.2em;
+            color: var(--langham-gold);
+            font-weight: bold;
+        }
+        #slideCounter {
+            color: white;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slides content remains the same -->
+        <!-- ... -->
+    </div>
+
+    <div class="controls">
+        <button onclick="prevSlide()">Previous</button>
+        <span id="slideCounter">1 / 13</span>
+        <button onclick="nextSlide()">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 13;
+        const slideContainer = document.querySelector('.slide-container');
+
+        function showSlide(slideNumber) {
+            const slides = document.querySelectorAll('.slide');
+            slides[slideNumber - 1].scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('slideCounter').textContent = `${slideNumber} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        slideContainer.addEventListener('scroll', () => {
+            const slides = document.querySelectorAll('.slide');
+            const scrollPosition = slideContainer.scrollTop;
+            const windowHeight = window.innerHeight;
+
+            slides.forEach((slide, index) => {
+                const slideTop = slide.offsetTop;
+                const slideBottom = slideTop + slide.offsetHeight;
+
+                if (scrollPosition >= slideTop && scrollPosition < slideBottom) {
+                    currentSlide = index + 1;
+                    document.getElementById('slideCounter').textContent = `${currentSlide} / ${totalSlides}`;
+                }
+            });
+        });
+
+        // Chart configurations remain the same
+        // ...
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Initialize charts after DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize all charts here
+            // ...
+        });
+    </script>
+</body>
+</html>
