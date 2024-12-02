@@ -17,209 +17,156 @@
             padding: 0;
             font-family: 'Arial', sans-serif;
             background: var(--langham-light);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow: hidden;
+            color: var(--langham-dark);
         }
         .slide-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: y mandatory;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
         }
         .slide {
             background: white;
             padding: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            scroll-snap-align: start;
-            min-height: calc(100vh - 80px); /* Adjust for controls height */
-            box-sizing: border-box;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .slide h1 {
+        h1 {
             color: var(--langham-dark);
-            font-size: 1.5em;
+            font-size: 24px;
             margin-bottom: 15px;
             border-bottom: 2px solid var(--langham-gold);
             padding-bottom: 10px;
         }
-        .slide h2 {
+        h2 {
             color: var(--langham-darkgold);
-            font-size: 1.2em;
+            font-size: 20px;
         }
-        .slide h3 {
+        h3 {
             color: var(--langham-gold);
-            font-size: 1em;
+            font-size: 18px;
         }
-        .slide ul {
-            color: var(--langham-dark);
-            line-height: 1.4;
+        ul {
             padding-left: 20px;
-        }
-        .source-citation {
-            font-size: 0.7em;
-            color: #666;
-            font-style: italic;
-            margin-top: 10px;
-            border-top: 1px solid #eee;
-            padding-top: 5px;
-        }
-        .slide sh1 {
-            color: var(--langham-dark);
-            font-size: 0.9em;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            background: var(--langham-dark);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-        button {
-            padding: 8px 16px;
-            border: none;
-            background: var(--langham-gold);
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Arial', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.8em;
-        }
-        button:hover {
-            background: #A08440;
-        }
-        .stat-box, .highlight-box, .case-study {
-            background: var(--langham-light);
-            padding: 10px;
-            margin: 10px 0;
-            border-left: 4px solid var(--langham-gold);
-            font-size: 0.9em;
         }
         .highlight-box {
             background: linear-gradient(45deg, var(--langham-gold), #E5D5A8);
             color: white;
-            border-left: none;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .stat-box {
+            background: var(--langham-light);
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid var(--langham-gold);
         }
         .chart-container {
-            position: relative;
-            margin: 10px auto;
-            height: 200px;
             width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: 20px auto;
         }
-        .dual-chart {
+        .controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--langham-dark);
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .chart-box {
-            background: white;
+            justify-content: space-between;
             padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .agenda-item {
-            display: flex;
-            align-items: center;
-            margin: 5px 0;
-        }
-        .agenda-number {
+        button {
             background: var(--langham-gold);
             color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            font-size: 0.8em;
-        }
-        .timeline {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 10px 0;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background: var(--langham-gold);
-            top: 0;
-            bottom: 0;
-            left: 20px;
-        }
-        .timeline-item {
-            padding: 10px 0 10px 50px;
-            position: relative;
-        }
-        .timeline-date {
-            font-weight: bold;
-            color: var(--langham-gold);
-            margin-bottom: 5px;
-            font-size: 0.9em;
-        }
-        .timeline-content {
-            padding: 10px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            font-size: 0.9em;
-        }
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 10px;
-            margin: 10px 0;
-        }
-        .kpi-item {
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 0.8em;
-        }
-        .kpi-value {
-            font-size: 1.2em;
-            color: var(--langham-gold);
-            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
         }
         #slideCounter {
             color: white;
-            font-size: 0.8em;
+            align-self: center;
+        }
+        @media (max-width: 768px) {
+            .slide-container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            h3 {
+                font-size: 16px;
+            }
+            .chart-container {
+                height: 200px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="slide-container">
-        <!-- Slides content remains the same -->
-        <!-- ... -->
+        <div class="slide" id="slide1">
+            <h1>Transforming Luxury Hospitality Through AI</h1>
+            <h2>A Vision for Langham Hospitality Group</h2>
+            <div class="highlight-box">
+                <p>"Where Timeless Elegance Meets Artificial Intelligence"</p>
+            </div>
+            <div class="stat-box">
+                <p>Langham Portfolio: 4 Brands | 37 Destinations | 48 Hotels</p>
+            </div>
+        </div>
+
+        <div class="slide" id="slide2">
+            <h1>Presentation Agenda</h1>
+            <ol>
+                <li>The Luxury Hospitality Landscape</li>
+                <li>Cross-Industry AI Success Cases</li>
+                <li>Langham AI Opportunities</li>
+                <li>Implementation Roadmap</li>
+                <li>Investment and Returns</li>
+            </ol>
+        </div>
+
+        <div class="slide" id="slide3">
+            <h1>The Luxury Hospitality Landscape</h1>
+            <div class="chart-container">
+                <canvas id="marketChart"></canvas>
+            </div>
+            <div class="stat-box">
+                <ul>
+                    <li>Global luxury hotel market size: $95.1 billion (2023)</li>
+                    <li>AI in hospitality market: $1.21 billion (2023)</li>
+                    <li>Expected CAGR: 25.8% (2024-2030)</li>
+                </ul>
+            </div>
+            <p class="source-citation">Sources: McKinsey Global Institute "AI in Hospitality 2024", Deloitte Hotel Industry Analysis 2023, Gartner AI Industry Reports Q4 2023</p>
+        </div>
+
+        <!-- Add more slides here -->
+
     </div>
 
     <div class="controls">
         <button onclick="prevSlide()">Previous</button>
-        <span id="slideCounter">1 / 13</span>
+        <span id="slideCounter">1 / 3</span>
         <button onclick="nextSlide()">Next</button>
     </div>
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 13;
-        const slideContainer = document.querySelector('.slide-container');
+        const totalSlides = 3; // Update this number as you add more slides
 
         function showSlide(slideNumber) {
-            const slides = document.querySelectorAll('.slide');
-            slides[slideNumber - 1].scrollIntoView({ behavior: 'smooth' });
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.style.display = 'none';
+            });
+            document.getElementById('slide' + slideNumber).style.display = 'block';
             document.getElementById('slideCounter').textContent = `${slideNumber} / ${totalSlides}`;
         }
 
@@ -237,37 +184,30 @@
             }
         }
 
-        slideContainer.addEventListener('scroll', () => {
-            const slides = document.querySelectorAll('.slide');
-            const scrollPosition = slideContainer.scrollTop;
-            const windowHeight = window.innerHeight;
+        // Initialize the first slide
+        showSlide(1);
 
-            slides.forEach((slide, index) => {
-                const slideTop = slide.offsetTop;
-                const slideBottom = slideTop + slide.offsetHeight;
-
-                if (scrollPosition >= slideTop && scrollPosition < slideBottom) {
-                    currentSlide = index + 1;
-                    document.getElementById('slideCounter').textContent = `${currentSlide} / ${totalSlides}`;
+        // Market Overview Chart
+        new Chart(document.getElementById('marketChart'), {
+            type: 'line',
+            data: {
+                labels: ['2023', '2024', '2025', '2026', '2027'],
+                datasets: [{
+                    label: 'AI in Hospitality Market Size (Billions)',
+                    data: [1.21, 1.52, 1.91, 2.40, 3.02],
+                    borderColor: '#C4A962',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
-            });
-        });
-
-        // Chart configurations remain the same
-        // ...
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
             }
-        });
-
-        // Initialize charts after DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize all charts here
-            // ...
         });
     </script>
 </body>
