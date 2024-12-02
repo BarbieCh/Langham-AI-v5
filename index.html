@@ -413,22 +413,27 @@
                 <canvas id="visionChart"></canvas>
             </div>
         </div>
+</div>
+
+        
     </div>
 
     <div class="controls">
         <button onclick="prevSlide()">Previous</button>
+        <span id="slideCounter">1 / 3</span>
         <button onclick="nextSlide()">Next</button>
     </div>
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 13;
+        const totalSlides = 13; // Update this number as you add more slides
 
         function showSlide(slideNumber) {
             document.querySelectorAll('.slide').forEach(slide => {
-                slide.classList.remove('active');
+                slide.style.display = 'none';
             });
-            document.getElementById('slide' + slideNumber).classList.add('active');
+            document.getElementById('slide' + slideNumber).style.display = 'block';
+            document.getElementById('slideCounter').textContent = `${slideNumber} / ${totalSlides}`;
         }
 
         function nextSlide() {
@@ -445,7 +450,9 @@
             }
         }
 
-        // Market Overview Chart
+        // Initialize the first slide
+        showSlide(1);
+// Market Overview Chart
         new Chart(document.getElementById('marketChart'), {
             type: 'line',
             data: {
@@ -565,53 +572,6 @@
                 }
             }
         });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                nextSlide();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
-            }
-        });
-
-        <!-- Add more slides here -->
-
-    </div>
-
-    <div class="controls">
-        <button onclick="prevSlide()">Previous</button>
-        <span id="slideCounter">1 / 3</span>
-        <button onclick="nextSlide()">Next</button>
-    </div>
-
-    <script>
-        let currentSlide = 1;
-        const totalSlides = 3; // Update this number as you add more slides
-
-        function showSlide(slideNumber) {
-            document.querySelectorAll('.slide').forEach(slide => {
-                slide.style.display = 'none';
-            });
-            document.getElementById('slide' + slideNumber).style.display = 'block';
-            document.getElementById('slideCounter').textContent = `${slideNumber} / ${totalSlides}`;
-        }
-
-        function nextSlide() {
-            if (currentSlide < totalSlides) {
-                currentSlide++;
-                showSlide(currentSlide);
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 1) {
-                currentSlide--;
-                showSlide(currentSlide);
-            }
-        }
-
-        // Initialize the first slide
-        showSlide(1);
 
         // Market Overview Chart
         new Chart(document.getElementById('marketChart'), {
